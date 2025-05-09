@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const gradeOptions = ["Kindergarten", "1st", "2nd", "3rd", "4th", "5th"];
 const subjects = ["Math", "Science", "English", "History", "Other"];

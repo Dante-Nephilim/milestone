@@ -1,9 +1,15 @@
+import { useLocation, useNavigate } from "react-router-dom";
 const Navbar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentPath = location.pathname;
+  const isLoginPage = currentPath === "/login";
+  const isHomePage = currentPath === "/";
   return (
     <header className="bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
         {/* Logo */}
-        <div className="text-xl font-semibold text-green-900">
+        <div className="text-xl font-semibold text-green-900" onClick={() => navigate("/")}>
           <span className="text-black">Milestone</span>
           <span className="text-green-700"> | Learning</span>
         </div>
@@ -29,7 +35,14 @@ const Navbar = () => {
           <button className="text-xs flex items-center border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-100">
             📞 <span className="ml-1">000-000-0000</span>
           </button>
-          <button className="bg-green-900 text-white text-sm px-4 py-1.5 rounded-md hover:bg-green-800">Login</button>
+          {!isLoginPage && (
+            <button
+              className="bg-green-900 text-white text-sm px-4 py-1.5 rounded-md hover:bg-green-800"
+              onClick={() => navigate(isHomePage ? "/login" : "/")}
+            >
+              {isHomePage ? "Login" : "Logout"}
+            </button>
+          )}
         </div>
       </div>
     </header>

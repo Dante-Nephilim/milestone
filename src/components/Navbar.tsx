@@ -7,6 +7,7 @@ const Navbar = () => {
 
   const isLoginPage = currentPath === "/login";
   const isHomePage = currentPath === "/";
+  const isSignupPage = currentPath === "/signup";
 
   const handleLogout = async () => {
     const token = localStorage.getItem("payload_token");
@@ -50,10 +51,9 @@ const Navbar = () => {
           <button className="hidden md:flex items-center text-xs border border-gray-300 rounded-full px-3 py-1.5 text-gray-700 hover:bg-gray-100">
             📞 <span className="ml-1">XXX-XXX-XXXX</span>
           </button>
-          {!isLoginPage && (
+          {!isLoginPage && !isSignupPage && (
             <button
               className="bg-green-900 text-white text-sm px-5 py-1.5 rounded-md hover:bg-green-800"
-              // onClick={() => navigate(isHomePage ? "/login" : "/")}
               onClick={() => {
                 if (isHomePage) {
                   navigate("/login");

@@ -8,6 +8,18 @@ const Navbar = () => {
   const isLoginPage = currentPath === "/login";
   const isHomePage = currentPath === "/";
 
+  const handleLogout = async () => {
+    const token = localStorage.getItem("payload_token");
+    const user = localStorage.getItem("payload_user");
+
+    if (token && user) {
+      localStorage.removeItem("payload_token");
+      localStorage.removeItem("payload_user");
+    }
+
+    navigate("/");
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full bg-white shadow-sm">
       <div className="max-w-full mx-auto flex items-center justify-between px-6 py-3">
@@ -41,7 +53,14 @@ const Navbar = () => {
           {!isLoginPage && (
             <button
               className="bg-green-900 text-white text-sm px-5 py-1.5 rounded-md hover:bg-green-800"
-              onClick={() => navigate(isHomePage ? "/login" : "/")}
+              // onClick={() => navigate(isHomePage ? "/login" : "/")}
+              onClick={() => {
+                if (isHomePage) {
+                  navigate("/login");
+                } else {
+                  handleLogout();
+                }
+              }}
             >
               {isHomePage ? "Login" : "Logout"}
             </button>

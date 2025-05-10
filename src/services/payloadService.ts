@@ -24,3 +24,18 @@ export const fetchFAQs = async () => {
   const res = await axios.get(`${API_BASE}/api/faqs?sort=order`);
   return res.data.docs;
 };
+
+export const loginUser = async (email: string, password: string) => {
+  const res = await axios.post(`${API_BASE}/api/users/login`, { email, password }, { withCredentials: true });
+  return res.data;
+};
+
+export const signupUser = async (email: string, password: string) => {
+  const res = await axios.post(`${API_BASE}/api/users`, { email, password }, { withCredentials: true });
+  return res.data;
+};
+
+export const logoutUser = async () => {
+  const res = await axios.post(`${API_BASE}/api/users/logout`, {}, { withCredentials: true });
+  return res.data;
+};

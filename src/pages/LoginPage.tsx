@@ -1,8 +1,34 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getMediaUrl } from "../services/payloadService";
+import { getMediaUrl, loginUser } from "../services/payloadService";
+
 const LoginPage = () => {
   const navigate = useNavigate();
   const backgroundImageUrl = getMediaUrl("login-image.png");
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      setErrorMsg("Please enter both email and password.");
+      return;
+    }
+
+    try {
+      const res = await loginUser(email, password);
+      console.log("Logged in:", res);
+      // Store the token and user info
+      localStorage.setItem("payload_token", res.token);
+      localStorage.setItem("payload_user", JSON.stringify(res.user));
+      navigate("/onboarding");
+    } catch (err) {
+      console.error(err);
+      setErrorMsg("Login failed. Please check your credentials.");
+    }
+  };
+
   return (
     <div className="min-h-screen flex">
       {/* Left Image */}
@@ -33,8 +59,22 @@ const LoginPage = () => {
 
         <div className="w-full max-w-sm text-center text-sm text-gray-500 my-3">or</div>
 
-        <input type="email" placeholder="Email" className="w-full max-w-sm border rounded-md px-3 py-2 mb-2" />
-        <input type="password" placeholder="Password" className="w-full max-w-sm border rounded-md px-3 py-2 mb-2" />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full max-w-sm border rounded-md px-3 py-2 mb-2"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full max-w-sm border rounded-md px-3 py-2 mb-2"
+        />
+
+        {errorMsg && <p className="text-sm text-red-600 mb-2">{errorMsg}</p>}
 
         <div className="w-full max-w-sm flex justify-between text-xs text-gray-500 mb-4">
           <span></span>
@@ -50,16 +90,19 @@ const LoginPage = () => {
 
         <button
           className="w-full max-w-sm bg-green-900 text-white py-2 rounded-md hover:bg-green-800 mb-3"
-          onClick={() => navigate("/onboarding")}
+          onClick={handleLogin}
         >
           Log In
         </button>
 
         <p className="text-sm text-gray-600">
-          Don’t have account?{" "}
-          <a href="#" className="text-green-900 font-medium hover:underline">
+          Don’t have an account?{" "}
+          <span
+            className="text-green-900 font-medium hover:underline cursor-pointer"
+            onClick={() => navigate("/signup")}
+          >
             Sign Up
-          </a>
+          </span>
         </p>
       </div>
     </div>

@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router-dom";
+import { getMediaUrl } from "../services/payloadService";
 const LoginPage = () => {
   const navigate = useNavigate();
+  const backgroundImageUrl = getMediaUrl("login-image.png");
   return (
     <div className="min-h-screen flex">
       {/* Left Image */}
       <div
         className="w-1/2 bg-cover bg-center hidden md:block"
-        style={{ backgroundImage: "url(https://via.placeholder.com/600x800?text=Login+Image)" }}
+        style={{ backgroundImage: `url(${backgroundImageUrl})` }}
       />
 
       {/* Right Form */}

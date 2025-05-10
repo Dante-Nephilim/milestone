@@ -1,3 +1,5 @@
+import { getMediaUrl } from "../services/payloadService";
+
 const roles = [
   { label: "I'm a Parent", value: "parent" },
   { label: "I'm a Student", value: "student" },
@@ -5,6 +7,7 @@ const roles = [
 ];
 
 const RoleSelectionPage = ({ onNext }: { onNext: () => void }) => {
+  const backgroundImageUrl = getMediaUrl("profile-setup-image.jpg");
   const handleSelect = (role: string) => {
     console.log("Selected role:", role);
     onNext(); // go to PersonalDetailsPage
@@ -15,7 +18,7 @@ const RoleSelectionPage = ({ onNext }: { onNext: () => void }) => {
       {/* Left Image */}
       <div
         className="w-1/2 bg-cover bg-center hidden md:block"
-        style={{ backgroundImage: "url(https://via.placeholder.com/600x800?text=Role+Image)" }}
+        style={{ backgroundImage: `url(${backgroundImageUrl})` }}
       />
 
       {/* Right Content */}

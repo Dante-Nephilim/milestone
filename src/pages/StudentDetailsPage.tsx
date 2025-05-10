@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getMediaUrl } from "../services/payloadService";
 
 const gradeOptions = ["Kindergarten", "1st", "2nd", "3rd", "4th", "5th"];
 const subjects = ["Math", "Science", "English", "History", "Other"];
@@ -27,12 +28,14 @@ const StudentDetailsPage = ({ onNext, onBack }: { onNext: () => void; onBack: ()
     onNext();
   };
 
+  const backgroundImageUrl = getMediaUrl("student-details-image.jpg");
+
   return (
     <div className="min-h-screen flex">
       {/* Left Image */}
       <div
         className="w-1/2 bg-cover bg-center hidden md:block"
-        style={{ backgroundImage: "url(https://via.placeholder.com/600x800?text=Student+Details)" }}
+        style={{ backgroundImage: `url(${backgroundImageUrl})` }}
       />
 
       {/* Right Form */}

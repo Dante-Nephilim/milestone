@@ -35,7 +35,7 @@ const Navbar = () => {
 
         {/* Actions */}
         <div className="flex items-center gap-4">
-          <button className="flex items-center text-xs border border-gray-300 rounded-full px-3 py-1.5 text-gray-700 hover:bg-gray-100">
+          <button className="hidden md:flex items-center text-xs border border-gray-300 rounded-full px-3 py-1.5 text-gray-700 hover:bg-gray-100">
             📞 <span className="ml-1">XXX-XXX-XXXX</span>
           </button>
           {!isLoginPage && (

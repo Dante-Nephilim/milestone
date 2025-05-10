@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getMediaUrl } from "../services/payloadService";
 
 const PersonalDetailsPage = ({ onNext, onBack }: { onNext: () => void; onBack: () => void }) => {
   const [title, setTitle] = useState("Mr.");
@@ -9,13 +10,14 @@ const PersonalDetailsPage = ({ onNext, onBack }: { onNext: () => void; onBack: (
     console.log({ title, firstName, lastName, mobile });
     onNext();
   };
+  const backgroundImageUrl = getMediaUrl("profile-setup-image.jpg");
 
   return (
     <div className="min-h-screen flex">
       {/* Left Image */}
       <div
         className="w-1/2 bg-cover bg-center hidden md:block"
-        style={{ backgroundImage: "url(https://via.placeholder.com/600x800?text=Personal+Details)" }}
+        style={{ backgroundImage: `url(${backgroundImageUrl})` }}
       />
 
       {/* Right Form */}

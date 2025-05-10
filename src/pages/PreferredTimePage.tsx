@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getMediaUrl } from "../services/payloadService";
 
 const PreferredTimePage = ({ onBack }: { onBack: () => void }) => {
   const navigate = useNavigate();
@@ -10,13 +11,13 @@ const PreferredTimePage = ({ onBack }: { onBack: () => void }) => {
     console.log("Preferred Time:", { date, time });
     navigate("/confirmation");
   };
-
+  const backgroundImageUrl = getMediaUrl("preferred-time-image.jpg");
   return (
     <div className="min-h-screen flex">
       {/* Left Image */}
       <div
         className="w-1/2 bg-cover bg-center hidden md:block"
-        style={{ backgroundImage: "url(https://via.placeholder.com/600x800?text=Schedule)" }}
+        style={{ backgroundImage: `url(${backgroundImageUrl})` }}
       />
 
       {/* Right Form */}

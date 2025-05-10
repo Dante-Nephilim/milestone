@@ -1,62 +1,63 @@
 const Footer = () => {
   return (
-    <footer className="bg-green-900 text-white pt-10 pb-4 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8">
-        {/* Logo/Brand */}
-        <div>
-          <h3 className="text-xl font-semibold mb-2">Milestone | Learning</h3>
-          <p className="text-sm text-gray-300">Personalized education that transforms potential into achievement.</p>
-        </div>
-
-        {/* Navigation */}
-        <div>
-          <h4 className="font-semibold mb-2 text-sm">Quick Links</h4>
-          <ul className="space-y-1 text-sm text-gray-300">
-            <li>
-              <a href="#about" className="hover:underline">
-                About Us
-              </a>
-            </li>
-            <li>
-              <a href="#what-we-do" className="hover:underline">
-                What We Do
-              </a>
-            </li>
-            <li>
-              <a href="#resources" className="hover:underline">
-                Resources
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="hover:underline">
-                Contact Us
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Contact & Socials */}
-        <div>
-          <h4 className="font-semibold mb-2 text-sm">Contact</h4>
-          <p className="text-sm text-gray-300 mb-2">📞 000-000-0000</p>
-          <p className="text-sm text-gray-300 mb-4">✉️ support@milestone.com</p>
-          <div className="flex space-x-3">
-            <a href="#" className="hover:text-gray-100">
-              🌐
+    <footer className="bg-[#023C35] text-white pt-10 pb-6 px-4 sm:px-6 lg:px-8 text-sm">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        {/* Left: Logo and Socials */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold">
+            Milestone <span className="font-light">| Learning</span>
+          </h3>
+          <div className="flex space-x-3 mt-2">
+            <a href="#" aria-label="LinkedIn" className="hover:opacity-80">
+              <img src="/icons/linkedin.svg" alt="LinkedIn" className="w-5 h-5" />
             </a>
-            <a href="#" className="hover:text-gray-100">
-              🐦
+            <a href="#" aria-label="Instagram" className="hover:opacity-80">
+              <img src="/icons/instagram.svg" alt="Instagram" className="w-5 h-5" />
             </a>
-            <a href="#" className="hover:text-gray-100">
-              📘
+            <a href="#" aria-label="Facebook" className="hover:opacity-80">
+              <img src="/icons/facebook.svg" alt="Facebook" className="w-5 h-5" />
             </a>
           </div>
+        </div>
+
+        {/* Center: Navigation */}
+        <div className="space-y-3">
+          <button className="bg-white text-[#023C35] px-4 py-2 rounded-full text-xs font-medium hover:bg-gray-100">
+            BOOK A CONSULTATION
+          </button>
+          <div>
+            <a href="#" className="block hover:underline">
+              Book a Learning Session
+            </a>
+            <a href="#" className="block hover:underline">
+              FAQ
+            </a>
+          </div>
+        </div>
+
+        {/* Right: Contact */}
+        <div className="space-y-3">
+          <h4 className="font-semibold text-sm">Contact Us</h4>
+          <p className="flex items-center gap-2">
+            📞 <span className="text-white/90">XXX XXXX XXXX</span>
+          </p>
+          <p className="flex items-center gap-2">
+            ✉️ <span className="text-white/90">hello@milestonelearning.com</span>
+          </p>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-green-800 mt-8 pt-4 text-center text-xs text-gray-300">
-        © {new Date().getFullYear()} Milestone Learning. All rights reserved.
+      <div className="mt-10 pt-4 border-t border-white/20 flex flex-col md:flex-row justify-between items-center text-white/80 text-xs gap-2">
+        <p>© {new Date().getFullYear()} Milestone Learning</p>
+        <div className="flex space-x-4">
+          <a href="#" className="hover:underline">
+            Privacy Policy
+          </a>
+          <a href="#" className="hover:underline">
+            Terms of Services
+          </a>
+        </div>
       </div>
     </footer>
   );

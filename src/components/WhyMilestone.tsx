@@ -1,46 +1,70 @@
+import { getMediaUrl } from "../services/payloadService";
+
 const reasons = [
   {
-    title: "Customized Learning Plans",
-    description: "Every student receives a personalized approach to match their needs and goals.",
+    icon: getMediaUrl("personalized-learning-2.png"),
+    title: "Personalized, efficient learning",
+    description: "Tailored instruction that maximizes understanding and progress.",
   },
   {
-    title: "Expert Tutors",
-    description: "Handpicked educators with deep subject knowledge and teaching experience.",
+    icon: getMediaUrl("collaboration-2.png"),
+    title: "Collaboration with parents & students",
+    description: "Clear communication and ongoing feedback to align on goals.",
   },
   {
-    title: "1-on-1 Live Sessions",
-    description: "Interactive sessions that maximize student engagement and retention.",
+    icon: getMediaUrl("skill-development-2.png"),
+    title: "Long-term skill development",
+    description: "Focused on growth, mastery, and real results.",
   },
   {
-    title: "Flexible Scheduling",
-    description: "We work around your schedule to ensure consistency and convenience.",
+    icon: getMediaUrl("supportive-env-2.png"),
+    title: "A nurturing, supportive environment",
+    description: "Meeting students where they are and helping them thrive.",
   },
   {
-    title: "Holistic Support",
-    description: "Beyond academics — we help with motivation, focus, and confidence.",
+    icon: getMediaUrl("confidence-building-2.png"),
+    title: "Confidence-building for success",
+    description: "Strategies to reduce anxiety and improve academic performance.",
   },
 ];
 
+// This should be the CMS-sourced background image
+const backgroundImage = getMediaUrl("why-milestone-background-2.png");
+
 const WhyMilestone = () => {
   return (
-    <section className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Why Milestone Learning?</h2>
-        <p className="mt-2 text-sm text-gray-600 max-w-2xl mx-auto">
-          We believe education is not one-size-fits-all. Our approach combines structure with flexibility, academic
-          excellence with emotional intelligence, and learning with purpose.
+    <section
+      className="bg-no-repeat bg-center bg-cover py-20"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+      }}
+    >
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+        <h2 className="text-3xl font-bold mb-2">Why Milestone Learning?</h2>
+        <p className="text-sm text-white/80 mb-12 max-w-2xl mx-auto">
+          Together, we celebrate every milestone—turning challenges into achievements and goals into reality.
         </p>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {reasons.map((item, index) => (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 place-items-center">
+          {reasons.map((item, idx) => (
             <div
-              key={index}
-              className="bg-white border border-gray-200 rounded-lg p-5 text-left hover:shadow-md transition"
+              key={idx}
+              className="bg-white text-center rounded-xl px-6 py-8 w-full max-w-sm shadow-sm text-gray-800"
             >
-              <div className="text-green-700 font-semibold text-sm mb-2">{item.title}</div>
-              <p className="text-xs text-gray-600">{item.description}</p>
+              <img src={item.icon} alt={item.title} className="w-[70px] h-[70px] mx-auto mb-5 object-contain" />
+              <h3 className="text-green-900 font-semibold text-base mb-2">{item.title}</h3>
+              <p className="text-sm text-gray-600">{item.description}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-10 flex justify-center gap-4">
+          <button className="bg-white text-green-900 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition">
+            Get Started Today
+          </button>
+          <button className="border border-white text-white px-6 py-2 rounded-full text-sm hover:bg-white hover:text-green-900 transition">
+            Learn More
+          </button>
         </div>
       </div>
     </section>
